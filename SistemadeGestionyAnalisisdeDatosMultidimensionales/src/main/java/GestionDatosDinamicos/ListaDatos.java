@@ -33,8 +33,22 @@ public class ListaDatos {
         listaDatosPareja.remove(pareja);
     }
 
+    public void modificarDatoReal(int indice, double nuevoDato) {
+    if (indice >= 0 && indice < listaDatosReales.size()) {
+        listaDatosReales.set(indice, nuevoDato);
+        }
+    }
+
     public List<Pareja> getListaDatosPareja() {
         return listaDatosPareja;
+    }
+
+    public Double obtenerDatoReal(int indice) {
+    if (indice >= 0 && indice < listaDatosReales.size()) {
+        return listaDatosReales.get(indice);
+    } else {
+        return null;
+    }
     }
 }
 
