@@ -11,10 +11,12 @@ public class Main {
         JFrame frame = new JFrame("Interfaz de Usuario Interactiva");
         frame.setSize(400, 200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
 
         JPanel panelPrincipal = new JPanel();
         panelPrincipal.setLayout(new BorderLayout());
         frame.add(panelPrincipal);
+
 
         // Menú desplegable
         JMenuBar menuBar = new JMenuBar();
@@ -52,7 +54,7 @@ public class Main {
         menuItemOrdenar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Lógica para ordenar datos
+                interfaz.ordenarListaDatosReales();
                 JOptionPane.showMessageDialog(panelPrincipal, "Función de ordenación aún no implementada.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             }
         });
@@ -61,7 +63,58 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Lógica para limpiar datos
+                interfaz.limpiarListaDatos();
                 JOptionPane.showMessageDialog(panelPrincipal, "Función de limpieza aún no implementada.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+        });
+
+        menuItemAgregar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Lógica para agregar datos
+                JOptionPane.showMessageDialog(panelPrincipal, "Función de agregar aún no implementada.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+        });
+
+        menuItemModificar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nuevoValor = JOptionPane.showInputDialog(panelPrincipal, "Ingrese el nuevo valor:");
+                if (nuevoValor != null) {
+                    JOptionPane.showMessageDialog(panelPrincipal, "Dato modificado: " + nuevoValor, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
+
+        menuItemEliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Lógica para eliminar un dato
+                // Ejemplo de uso de JOptionPane.showInputDialog():
+                String datoAEliminar = JOptionPane.showInputDialog(panelPrincipal, "Ingrese el dato a eliminar:");
+                if (datoAEliminar != null) {
+                    // Aquí deberías implementar la lógica para eliminar el dato de la lista
+                    JOptionPane.showMessageDialog(panelPrincipal, "Dato eliminado: " + datoAEliminar, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
+
+        menuItemOrdenar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Lógica para ordenar la lista de datos
+                // Ejemplo de uso de Collections.sort():
+                // Collections.sort(listaDatos.getListaDatosReales());
+                JOptionPane.showMessageDialog(panelPrincipal, "Lista de datos ordenada.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+
+        menuItemLimpiar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Lógica para limpiar la lista de datos
+                interfaz.limpiarListaDatos();
+                JOptionPane.showMessageDialog(panelPrincipal, "Lista de datos limpia.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
@@ -93,5 +146,6 @@ public class Main {
                 JOptionPane.showMessageDialog(panelPrincipal, "Dato agregado: " + dato, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
         });
+        frame.setVisible(true);
     }
 }
