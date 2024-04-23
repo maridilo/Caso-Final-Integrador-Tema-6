@@ -1,17 +1,17 @@
 package GestionDatosDinamicos;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ListaDatos {
-    private List<String> listaDatosReales;
+    private static List<String> listaDatosReales;
     private List<Pareja> listaDatosPareja;
 
     public ListaDatos() {
-        this.listaDatosReales = new ArrayList<String>();
+        this.listaDatosReales = new ArrayList<>();
         this.listaDatosPareja = new ArrayList<>();
     }
 
-    // Métodos para datos reales
     public void agregarDatoReal(String dato) {
         listaDatosReales.add(dato);
     }
@@ -20,11 +20,21 @@ public class ListaDatos {
         listaDatosReales.remove(dato);
     }
 
-    public List<String> getListaDatosReales() {
+    public static List<String> getListaDatosReales() {
         return listaDatosReales;
     }
 
     // Métodos para datos de pareja
+
+    public void ordenarDatosReales() {
+        Collections.sort(ListaDatos.getListaDatosReales());
+
+    }
+
+    public void limpiarListaDatosReales() {
+        listaDatosReales.clear();
+    }
+
     public void agregarDatoPareja(Pareja pareja) {
         listaDatosPareja.add(pareja);
     }
@@ -34,8 +44,8 @@ public class ListaDatos {
     }
 
     public void modificarDatoReal(int indice, String nuevoDato) {
-    if (indice >= 0 && indice < listaDatosReales.size()) {
-        listaDatosReales.set(indice, nuevoDato);
+        if (indice >= 0 && indice < listaDatosReales.size()) {
+            listaDatosReales.set(indice, nuevoDato);
         }
     }
 
@@ -44,11 +54,19 @@ public class ListaDatos {
     }
 
     public String obtenerDatoReal(int indice) {
-    if (indice >= 0 && indice < listaDatosReales.size()) {
-        return listaDatosReales.get(indice);
-    } else {
-        return null;
+        if (indice >= 0 && indice < listaDatosReales.size()) {
+            return listaDatosReales.get(indice);
+        } else {
+            return null;
+        }
     }
+
+    private void eliminarDato(List<?> lista, Object dato) {
+        lista.remove(dato);
+    }
+
+    public void ordenarDatos() {
     }
 }
+
 

@@ -1,6 +1,7 @@
 
 import GestionDatosDinamicos.InterfazUsuarioInteractiva;
-
+import GestionDatosDinamicos.ListaDatos;
+import GestionDatosDinamicos.Pareja;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,6 +10,7 @@ import java.awt.event.ActionListener;
 public class Main {
     public static void main(String[] args) {
         InterfazUsuarioInteractiva interfaz = new InterfazUsuarioInteractiva();
+        interfaz.iniciarInterfaz();
 
         JFrame frame = new JFrame("Interfaz de Usuario Interactiva");
         frame.setSize(600, 500);
@@ -36,7 +38,6 @@ public class Main {
             public void actionPerformed(ActionEvent e) {
                 String datoStr = JOptionPane.showInputDialog(panelPrincipal, "Ingrese el dato:");
                 if (datoStr != null) {
-                    interfaz.agregarDatoReal(datoStr);
                     textAreaDatos.append(datoStr + "\n");
                     JOptionPane.showMessageDialog(panelPrincipal, "Dato agregado: " + datoStr, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
                     textFieldDato.setText("");
@@ -68,23 +69,6 @@ public class Main {
                     textAreaDatos.setText("");
                     JOptionPane.showMessageDialog(panelPrincipal, "Dato eliminado: " + datoAEliminar, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
                 }
-            }
-        });
-
-        menuItemOrdenar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                interfaz.ordenarListaDatosReales();
-                JOptionPane.showMessageDialog(panelPrincipal, "Lista de datos ordenada.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-            }
-        });
-
-        menuItemLimpiar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                textAreaDatos.setText("");
-                interfaz.limpiarListaDatos();
-                JOptionPane.showMessageDialog(panelPrincipal, "Lista de datos limpia.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
