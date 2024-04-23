@@ -34,14 +34,12 @@ public class Main {
         menuItemAgregar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String datoStr = textFieldDato.getText();
-                if (!datoStr.isEmpty()) {
+                String datoStr = JOptionPane.showInputDialog(panelPrincipal, "Ingrese el dato:");
+                if (datoStr != null) {
                     interfaz.agregarDatoReal(datoStr);
                     textAreaDatos.append(datoStr + "\n");
                     JOptionPane.showMessageDialog(panelPrincipal, "Dato agregado: " + datoStr, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
                     textFieldDato.setText("");
-                } else {
-                    JOptionPane.showMessageDialog(panelPrincipal, "Error: El campo está vacío", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -49,14 +47,17 @@ public class Main {
         menuItemModificar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String datoModificar = JOptionPane.showInputDialog(panelPrincipal,"Ingrese el dato que desea modificar");
-                String nuevoValor = JOptionPane.showInputDialog(panelPrincipal, "Ingrese el nuevo valor:");
-                if (nuevoValor != null) {
-                    // Agregar lógica para modificar el dato en la lista
-                    textAreaDatos.setText(nuevoValor); // Modificamos el texto en el JTextArea
-                    JOptionPane.showMessageDialog(panelPrincipal, "Dato modificado: " + nuevoValor, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                String datoModificar = JOptionPane.showInputDialog(panelPrincipal, "Ingrese el dato que desea modificar");
+                if (datoModificar != null && !datoModificar.isEmpty()) {
+                    String nuevoValor = JOptionPane.showInputDialog(panelPrincipal, "Ingrese el nuevo valor:");
+                    if (nuevoValor != null) {
+                        String textoActual = textAreaDatos.getText();
+                        String nuevoTexto = textoActual.replaceFirst(datoModificar, nuevoValor);
+                        textAreaDatos.setText(nuevoValor);
+                        JOptionPane.showMessageDialog(panelPrincipal, "Dato modificado: " + nuevoValor, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                          }
                      }
-                 }
+                }
             });
 
         menuItemEliminar.addActionListener(new ActionListener() {
