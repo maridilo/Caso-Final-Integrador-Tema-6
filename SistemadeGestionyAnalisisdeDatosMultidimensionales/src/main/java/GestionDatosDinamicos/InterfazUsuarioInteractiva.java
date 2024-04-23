@@ -12,7 +12,7 @@ public class InterfazUsuarioInteractiva {
         this.listaDatos = new ListaDatos();
     }
 
-    public void agregarDatoReal(double dato) {
+    public void agregarDatoReal(String dato) {
         listaDatos.agregarDatoReal(dato);
     }
 
@@ -30,7 +30,7 @@ public class InterfazUsuarioInteractiva {
         listaDatos.eliminarDatoPareja(pareja);
     }
 
-    public List<Double> obtenerListaDatosReales() {
+    public List<String> obtenerListaDatosReales() {
         return listaDatos.getListaDatosReales();
     }
 
@@ -61,7 +61,6 @@ public class InterfazUsuarioInteractiva {
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             List<Double> datosReales = (List<Double>) ois.readObject();
             List<Pareja> datosPareja = (List<Pareja>) ois.readObject();
-            listaDatos.getListaDatosReales().addAll(datosReales);
             listaDatos.getListaDatosPareja().addAll(datosPareja);
             System.out.println("Datos cargados desde el archivo '" + nombreArchivo + "'.");
         } catch (IOException | ClassNotFoundException e) {

@@ -3,16 +3,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListaDatos {
-    private List<Double> listaDatosReales;
+    private List<String> listaDatosReales;
     private List<Pareja> listaDatosPareja;
 
     public ListaDatos() {
-        this.listaDatosReales = new ArrayList<>();
+        this.listaDatosReales = new ArrayList<String>();
         this.listaDatosPareja = new ArrayList<>();
     }
 
     // Métodos para datos reales
-    public void agregarDatoReal(double dato) {
+    public void agregarDatoReal(String dato) {
         listaDatosReales.add(dato);
     }
 
@@ -20,7 +20,7 @@ public class ListaDatos {
         listaDatosReales.remove(dato);
     }
 
-    public List<Double> getListaDatosReales() {
+    public List<String> getListaDatosReales() {
         return listaDatosReales;
     }
 
@@ -33,7 +33,7 @@ public class ListaDatos {
         listaDatosPareja.remove(pareja);
     }
 
-    public void modificarDatoReal(int indice, double nuevoDato) {
+    public void modificarDatoReal(int indice, String nuevoDato) {
     if (indice >= 0 && indice < listaDatosReales.size()) {
         listaDatosReales.set(indice, nuevoDato);
         }
@@ -43,7 +43,7 @@ public class ListaDatos {
         return listaDatosPareja;
     }
 
-    public Double obtenerDatoReal(int indice) {
+    public String obtenerDatoReal(int indice) {
     if (indice >= 0 && indice < listaDatosReales.size()) {
         return listaDatosReales.get(indice);
     } else {
